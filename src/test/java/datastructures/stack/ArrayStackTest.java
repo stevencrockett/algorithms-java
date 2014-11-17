@@ -1,4 +1,5 @@
-import datastructures.stack.ArrayStack;
+package datastructures.stack;
+
 import org.junit.Before;
 
 

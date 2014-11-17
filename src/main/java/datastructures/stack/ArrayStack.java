@@ -61,6 +61,7 @@ public class ArrayStack<T> implements Stack<T> {
      * If the underlying array is full, the stack is copied over to a larger array
      * to accommodate the pushed item.
      */
+    @Override
     public void push(final T item) {
         // check that stack has enough space. if not, first increase size and copy
         if (size == items.length) {
@@ -77,6 +78,7 @@ public class ArrayStack<T> implements Stack<T> {
      * If the underlying array is sufficiently empty, the stack is copied over
      * to a smaller array to reduce memory consumption.
      */
+    @Override
     public Optional<T> pop() {
         // first check if stack is empty
         if (size == 0) {
@@ -100,6 +102,7 @@ public class ArrayStack<T> implements Stack<T> {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Optional<T> peek() {
         if (size > 0) {
             return Optional.of(items[size - 1]);
@@ -113,6 +116,7 @@ public class ArrayStack<T> implements Stack<T> {
      * {@inheritDoc}
      * This methods takes constant time.
      */
+    @Override
     public int size() {
         return size;
     }
@@ -121,6 +125,7 @@ public class ArrayStack<T> implements Stack<T> {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
