@@ -1,7 +1,8 @@
 package datastructures.unionfind;
 
 /**
- * Union-find implementation backed by an array.
+ * Union-find implementation backed by an array. Optimised for efficient find
+ * operations, while unions take longer.
  */
 public class QuickFind implements UnionFind {
 
@@ -26,6 +27,7 @@ public class QuickFind implements UnionFind {
 
     /**
      * {@inheritDoc}
+     * Takes O(N) time per union operation for N vertices.
      */
     @Override
     public void union(final int vertexIndex, final int otherVertexIndex) {
@@ -41,6 +43,7 @@ public class QuickFind implements UnionFind {
 
     /**
      * {@inheritDoc}
+     * Takes O(1) time per find operation i.e. constant time.
      */
     @Override
     public int find(final int vertexIndex) {
@@ -50,6 +53,7 @@ public class QuickFind implements UnionFind {
 
     /**
      * {@inheritDoc}
+     * Takes O(1) time per find operation i.e. constant time.
      */
     @Override
     public boolean connected(final int vertexIndex, final int otherVertexIndex) {
