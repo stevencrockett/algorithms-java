@@ -1,8 +1,10 @@
 package datastructures.unionfind;
 
 /**
- * Union-find implementation backed by an array. Optimised for efficient find
- * operations, while unions take longer.
+ * Union-find implementation backed by an array. Connected components are represented as IDs in the array.
+ * Each entry in the array - corresponding to a vertex - stores the ID of its connected component.
+ *
+ * Optimised for efficient find operations, while unions take longer.
  */
 public class QuickFind implements UnionFind {
 
@@ -53,7 +55,7 @@ public class QuickFind implements UnionFind {
 
     /**
      * {@inheritDoc}
-     * Takes O(1) time per find operation i.e. constant time.
+     * Takes O(1) time per connected operation i.e. constant time.
      */
     @Override
     public boolean connected(final int vertexIndex, final int otherVertexIndex) {
