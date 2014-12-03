@@ -85,8 +85,8 @@ public class ArrayStack<T> implements Stack<T> {
             return Optional.empty();
         }
 
-        final T item = items[size-1]; // get reference to item on top of the stack
         size--;
+        final T item = items[size]; // get reference to item on top of the stack
         items[size] = null; // allow GC to reclaim memory
 
         // check if we need to reduce the size of the array
