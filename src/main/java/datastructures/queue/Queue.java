@@ -5,7 +5,7 @@ import java.util.Optional;
 /**
  * A queue, allowing elements to be enqueued and dequeued in FIFO order.
  */
-public interface Queue<T> {
+public interface Queue<T> extends Iterable<T> {
 
     /**
      * Adds an item to the back of the queue.

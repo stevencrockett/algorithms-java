@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 /**
  * Abstract test class for all Queue implementations. Queues should be consistent in their
@@ -82,6 +83,17 @@ public abstract class QueueTest {
         for (int i = 0; i < limit; i++) {
             Assert.assertEquals(i, queue.dequeue().get().intValue());
         }
+    }
+
+    @Test
+    public void testQueueIterator() {
+
+        final int numItems = 10;
+
+        IntStream.range(0, numItems).forEach(queue::enqueue);
+
+        IntStream.range(0, numItems).forEach(expectedItem ->
+                Assert.assertEquals(expectedItem, queue.dequeue().get().intValue()));
     }
 
 }

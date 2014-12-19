@@ -1,5 +1,6 @@
 package datastructures.queue;
 
+import java.util.Iterator;
 import java.util.Optional;
 
 /**
@@ -98,5 +99,37 @@ public class ListQueue<T> implements Queue<T> {
     @Override
     public boolean isEmpty() {
         return size == 0;
+    }
+
+
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator<T> iterator() {
+        return new ListQueueIterator();
+    }
+
+
+    /**
+     * An iterator that iterates through the queue, starting at the front.
+     */
+    private class ListQueueIterator implements Iterator<T> {
+
+        Node currentItem = firstItem;
+
+        @Override
+        public boolean hasNext() {
+            return currentItem.next != null;
+        }
+
+        @Override
+        public T next() {
+            final T item = currentItem.item;
+            currentItem = currentItem.next;
+            return item;
+        }
     }
 }

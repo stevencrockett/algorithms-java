@@ -1,5 +1,6 @@
 package datastructures.queue;
 
+import java.util.Iterator;
 import java.util.Optional;
 
 /**
@@ -157,6 +158,45 @@ public class ArrayQueue<T> implements Queue<T> {
     @Override
     public boolean isEmpty() {
         return size == 0;
+    }
+
+
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator<T> iterator() {
+        return new ArrayQueueIterator();
+    }
+
+
+    /**
+     * An iterator that iterates through the queue, starting at the front.
+     */
+    private class ArrayQueueIterator implements Iterator<T> {
+
+        int currentIndex = frontIndex;
+        boolean hasNext = true;
+
+        @Override
+        public boolean hasNext() {
+            return hasNext;
+        }
+
+        @Override
+        public T next() {
+            final T item = items[currentIndex];
+
+            if (currentIndex != backIndex) {
+                currentIndex = (currentIndex + 1) % items.length;
+            } else {
+                hasNext = false;
+            }
+
+            return item;
+        }
     }
 
 
