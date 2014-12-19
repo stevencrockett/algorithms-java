@@ -1,5 +1,6 @@
 package datastructures.stack;
 
+import java.util.Iterator;
 import java.util.Optional;
 
 /**
@@ -105,6 +106,38 @@ public class ListStack<T> implements Stack<T> {
     @Override
     public boolean isEmpty() {
         return size == 0;
+    }
+
+
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator<T> iterator() {
+        return new ListStackIterator();
+    }
+
+
+    /**
+     * An iterator that iterates through the stack, starting at the top.
+     */
+    private class ListStackIterator implements Iterator<T> {
+
+        Node currentItem = firstItem;
+
+        @Override
+        public boolean hasNext() {
+            return currentItem.next != null;
+        }
+
+        @Override
+        public T next() {
+            final T item = currentItem.item;
+            currentItem = currentItem.next;
+            return item;
+        }
     }
 
 

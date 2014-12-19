@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 /**
  * Abstract test class for all Stack implementations. Stacks should be consistent in their
@@ -103,4 +104,20 @@ public abstract class StackTest {
         final Optional<Integer> value = stack.peek();
         Assert.assertEquals(pushedValue, value.get().intValue());
     }
+
+    @Test
+    public void testStackIterator() {
+
+        final int numItems = 10;
+
+        IntStream.range(0, numItems).forEach(stack::push);
+
+        int expectedItem = numItems - 1;
+
+        for (Integer i : stack) {
+            Assert.assertEquals(expectedItem, stack.pop().get().intValue());
+            expectedItem--;
+        }
+    }
+
 }

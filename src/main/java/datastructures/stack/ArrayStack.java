@@ -1,13 +1,14 @@
 package datastructures.stack;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Optional;
 
 /**
  * Stack implementation backed by an array. The array is grown and contracted
  * depending on how full the stack is, causing elements to be copied.
  */
-public class ArrayStack<T> implements Stack<T> {
+public class ArrayStack<T> implements Stack<T>, Iterable<T> {
 
     /**
      * Default capacity of the stack if no initial size is specified.
@@ -128,5 +129,36 @@ public class ArrayStack<T> implements Stack<T> {
     @Override
     public boolean isEmpty() {
         return size == 0;
+    }
+
+
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator<T> iterator() {
+        return new ArrayStackIterator();
+    }
+
+
+    /**
+     * An iterator that iterates through the stack, starting at the top.
+     */
+    private class ArrayStackIterator implements Iterator<T> {
+
+        int currentIndex = size;
+
+        @Override
+        public boolean hasNext() {
+            return currentIndex > 0;
+        }
+
+        @Override
+        public T next() {
+            currentIndex--;
+            return items[currentIndex];
+        }
     }
 }

@@ -5,7 +5,7 @@ import java.util.Optional;
 /**
  * A stack, allowing elements to be pushed on and popped off the stack in LIFO order.
  */
-public interface Stack<T> {
+public interface Stack<T> extends Iterable<T> {
 
     /**
      * Adds an item on to the top of the stack.
