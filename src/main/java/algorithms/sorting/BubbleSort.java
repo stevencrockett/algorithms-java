@@ -23,10 +23,10 @@ public class BubbleSort {
      * order to compare the items and provide an ordering.
      *
      * @param items The items to be sorted.
-     * @param compare Function to compare the given items.
+     * @param compareFunc Function to compare the given items.
      * @param <T> Type of the items to be sorted.
      */
-    public static <T> void sort(T[] items, Comparator<T> compare) {
+    public static <T> void sort(T[] items, Comparator<T> compareFunc) {
 
         final int itemCount = items.length;
 
@@ -39,7 +39,7 @@ public class BubbleSort {
             for (int j = 0, end = iterations - i; j < end; j++) {
 
                 // compare adjacent items in the array and swap if out of order
-                if (compare.compare(items[j], items[j + 1]) > 0) {
+                if (compareFunc.compare(items[j], items[j + 1]) > 0) {
                     final T temp = items[j];
                     items[j] = items[j + 1];
                     items[j + 1] = temp;

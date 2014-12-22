@@ -23,10 +23,10 @@ public class InsertionSort {
      * order to compare the items and provide an ordering.
      *
      * @param items The items to be sorted.
-     * @param compare Function to compare the given items.
+     * @param compareFunc Function to compare the given items.
      * @param <T> Type of the items to be sorted.
      */
-    public static <T> void sort(T[] items, Comparator<T> compare) {
+    public static <T> void sort(T[] items, Comparator<T> compareFunc) {
 
         // move pointer forward each time, considering the next item which needs to be placed in sorted order
         for (int i = 1, itemCount = items.length; i < itemCount; i++) {
@@ -36,7 +36,7 @@ public class InsertionSort {
             for (int j = i - 1; j >= 0; j--) {
 
                 // if the previous item is greater than the new item (in the higher index), swap them
-                if (compare.compare(items[j], items[j+1]) > 0) {
+                if (compareFunc.compare(items[j], items[j+1]) > 0) {
                     final T temp = items[j];
                     items[j] = items[j + 1];
                     items[j + 1] = temp;

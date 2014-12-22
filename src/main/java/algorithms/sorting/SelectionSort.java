@@ -23,10 +23,10 @@ public class SelectionSort {
      * order to compare the items and provide an ordering.
      *
      * @param items The items to be sorted.
-     * @param compare Function to compare the given items.
+     * @param compareFunc Function to compare the given items.
      * @param <T> Type of the items to be sorted.
      */
-    public static <T> void sort(T[] items, Comparator<T> compare) {
+    public static <T> void sort(T[] items, Comparator<T> compareFunc) {
 
         final int itemCount = items.length;
 
@@ -38,7 +38,7 @@ public class SelectionSort {
 
             // iterate forward to the end of the array, finding the min value
             for (int j = i + 1; j < itemCount; j++) {
-                if (compare.compare(currentMin, items[j]) > 0) {
+                if (compareFunc.compare(currentMin, items[j]) > 0) {
                     currentMinIndex = j;
                     currentMin = items[j];
                 }
