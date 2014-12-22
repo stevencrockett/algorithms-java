@@ -2,7 +2,6 @@ package datastructures.stack;
 
 import org.junit.Before;
 
-
 public class ListStackTest extends StackTest {
 
     @Before

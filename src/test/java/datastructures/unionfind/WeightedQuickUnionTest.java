@@ -2,7 +2,6 @@ package datastructures.unionfind;
 
 import org.junit.Before;
 
-
 public class WeightedQuickUnionTest extends UnionFindTest {
 
     @Before

@@ -7,7 +7,6 @@ import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
-
 public class SearchTest {
 
     @Test
