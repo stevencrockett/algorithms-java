@@ -35,11 +35,14 @@ public class InsertionSort {
             // position among the items previously sorted.
             for (int j = i - 1; j >= 0; j--) {
 
+                // index of the element which the element at the jth index is compared with
+                final int otherIndex = j + 1;
+
                 // if the previous item is greater than the new item (in the higher index), swap them
-                if (compareFunc.compare(items[j], items[j+1]) > 0) {
+                if (compareFunc.compare(items[j], items[otherIndex]) > 0) {
                     final T temp = items[j];
-                    items[j] = items[j + 1];
-                    items[j + 1] = temp;
+                    items[j] = items[otherIndex];
+                    items[otherIndex] = temp;
                 } else {
                     // due to insertion sort, we have the guarantee that all the items seen so far
                     // are in sorted order, so we can terminate the backwards iteration early
