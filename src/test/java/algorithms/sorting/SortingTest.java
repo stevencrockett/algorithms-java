@@ -41,6 +41,13 @@ public class SortingTest {
         Assert.assertTrue(isSorted(items));
     }
 
+    @Test
+    public void testShellSort() {
+        ShellSort.sort(items);
+        Assert.assertTrue(isSorted(items));
+    }
+
+
     private boolean isSorted(final Double[] items) {
         // check that items are in ascending order
         for (int i = 0, iterations = items.length - 1; i < iterations; i++) {
