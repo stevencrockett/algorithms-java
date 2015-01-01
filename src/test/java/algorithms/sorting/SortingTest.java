@@ -10,7 +10,7 @@ public class SortingTest {
 
     private Double[] items;
 
-    private static final int ITEM_COUNT = 1000;
+    private static final int ITEM_COUNT = 6;
 
     @Before
     public void initialise() {
@@ -44,6 +44,12 @@ public class SortingTest {
     @Test
     public void testShellSort() {
         ShellSort.sort(items);
+        Assert.assertTrue(isSorted(items));
+    }
+
+    @Test
+    public void testMergeSort() {
+        MergeSort.sort(items);
         Assert.assertTrue(isSorted(items));
     }
 
