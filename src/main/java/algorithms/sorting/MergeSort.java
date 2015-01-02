@@ -8,6 +8,15 @@ import java.util.Comparator;
 public class MergeSort {
 
     /**
+     * If the size of the array is sufficiently small, the algorithm backs off to insertion
+     * sort which is more efficient for small arrays. If the number of items is 7 or less,
+     * insertion sort is used. Since arrays are zero-indexed, an offset is subtracted in advance
+     * rather than subtracting the offset every time the array size is computed.
+     */
+    final static int SIZE_THRESHOLD = 7 - 1;
+
+
+    /**
      * Sort the given items in ascending order.
      * Items implementing comparable can be easily sorted.
      *
@@ -47,8 +56,9 @@ public class MergeSort {
      */
     private static <T> void sort(T[] items, T[] aux, int low, int high, Comparator<T> compareFunc) {
 
-        // if it's a single element we don't need to sort it
-        if (high <= low) {
+        // if the array to be sorted is sufficiently small, backoff to insertion sort
+        if (high - low <= SIZE_THRESHOLD) {
+            InsertionSort.sort(aux, low, high, compareFunc);
             return;
         }
 
@@ -60,6 +70,8 @@ public class MergeSort {
         // if the largest element of the lower half isn't greater than the smallest element of the
         // upper half, then the whole array must already be in sorted order, so we can end early.
         if (compareFunc.compare(items[mid], items[mid + 1]) < 0) {
+            // since we are avoiding the merge, we need to manually copy into the auxiliary array
+            System.arraycopy(items, low, aux, low, high - low + 1);
             return;
         }
 
@@ -105,7 +117,6 @@ public class MergeSort {
 
         }
     }
-
 
 
 }
