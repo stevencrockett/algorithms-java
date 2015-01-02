@@ -10,7 +10,7 @@ public class SortingTest {
 
     private Double[] items;
 
-    private static final int ITEM_COUNT = 6;
+    private static final int ITEM_COUNT = 10000;
 
     @Before
     public void initialise() {
