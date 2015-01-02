@@ -6,7 +6,9 @@ import java.util.Optional;
 /**
  * Generic implementation of binary search.
  */
-public class BinarySearch {
+public final class BinarySearch {
+
+    private BinarySearch() { }
 
     /**
      * Search for the key within the given array of items.

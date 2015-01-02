@@ -5,7 +5,9 @@ import java.util.*;
 /**
  * Generic implementation of shell sort, sorting items in ascending order.
  */
-public class ShellSort {
+public final class ShellSort {
+
+    private ShellSort() { }
 
     /**
      * Sort the given items in ascending order.
@@ -14,7 +16,7 @@ public class ShellSort {
      * @param items The items to be sorted.
      * @param <T> Type of the items to be sorted.
      */
-    public static <T extends Comparable<T>> void sort(T[] items) {
+    public static <T extends Comparable<T>> void sort(final T[] items) {
         sort(items, Comparable::compareTo);
     }
 
@@ -27,7 +29,7 @@ public class ShellSort {
      * @param compareFunc Function to compare the given items.
      * @param <T> Type of the items to be sorted.
      */
-    public static <T> void sort(T[] items, Comparator<T> compareFunc) {
+    public static <T> void sort(final T[] items, final Comparator<T> compareFunc) {
 
         final int itemCount = items.length;
 
@@ -59,7 +61,6 @@ public class ShellSort {
                     }
 
                 }
-
 
             }
 

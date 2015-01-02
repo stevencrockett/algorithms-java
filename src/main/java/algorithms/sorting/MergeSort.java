@@ -5,7 +5,9 @@ import java.util.Comparator;
 /**
  * Generic implementation of merge sort, sorting items in ascending order.
  */
-public class MergeSort {
+public final class MergeSort {
+
+    private MergeSort() { }
 
     /**
      * If the size of the array is sufficiently small, the algorithm backs off to insertion
@@ -23,7 +25,7 @@ public class MergeSort {
      * @param items The items to be sorted.
      * @param <T> Type of the items to be sorted.
      */
-    public static <T extends Comparable<T>> void sort(T[] items) {
+    public static <T extends Comparable<T>> void sort(final T[] items) {
         sort(items, Comparable::compareTo);
     }
 
@@ -36,7 +38,7 @@ public class MergeSort {
      * @param compareFunc Function to compare the given items.
      * @param <T> Type of the items to be sorted.
      */
-    public static <T> void sort(T[] items, Comparator<T> compareFunc) {
+    public static <T> void sort(final T[] items, final Comparator<T> compareFunc) {
         final T[] aux = items.clone(); // create extra array to copy items between
         sort(aux, items, 0, items.length - 1, compareFunc);
     }
@@ -53,7 +55,8 @@ public class MergeSort {
      * @param compareFunc Function to compare the given items.
      * @param <T> Type of the items to be sorted.
      */
-    private static <T> void sort(T[] items, T[] aux, int low, int high, Comparator<T> compareFunc) {
+    private static <T> void sort(final T[] items, final T[] aux, final int low, final int high,
+                                 final Comparator<T> compareFunc) {
 
         // if the array to be sorted is sufficiently small, backoff to insertion sort
         if (high - low <= SIZE_THRESHOLD) {
@@ -89,7 +92,8 @@ public class MergeSort {
      * @param compareFunc Function to compare the given items.
      * @param <T> Type of the items to be sorted.
      */
-    private static <T> void merge(T[] items, T[] aux, int low, int mid, int high, Comparator<T> compareFunc) {
+    private static <T> void merge(final T[] items, final T[] aux, final int low, final int mid, final int high,
+                                  final Comparator<T> compareFunc) {
 
         // maintain pointers to the next available element to be merged in each subarray
         int lowerPointer = low, upperPointer = mid + 1;

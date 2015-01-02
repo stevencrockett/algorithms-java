@@ -5,7 +5,9 @@ import java.util.Comparator;
 /**
  * Generic implementation of bubble sort, sorting items in ascending order.
  */
-public class BubbleSort {
+public final class BubbleSort {
+
+    private BubbleSort() { }
 
     /**
      * Sort the given items in ascending order.
@@ -14,7 +16,7 @@ public class BubbleSort {
      * @param items The items to be sorted.
      * @param <T> Type of the items to be sorted.
      */
-    public static <T extends Comparable<T>> void sort(T[] items) {
+    public static <T extends Comparable<T>> void sort(final T[] items) {
         sort(items, Comparable::compareTo);
     }
 
@@ -27,7 +29,7 @@ public class BubbleSort {
      * @param compareFunc Function to compare the given items.
      * @param <T> Type of the items to be sorted.
      */
-    public static <T> void sort(T[] items, Comparator<T> compareFunc) {
+    public static <T> void sort(final T[] items, final Comparator<T> compareFunc) {
 
         final int itemCount = items.length;
 

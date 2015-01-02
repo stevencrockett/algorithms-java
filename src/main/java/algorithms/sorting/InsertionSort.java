@@ -5,7 +5,9 @@ import java.util.Comparator;
 /**
  * Generic implementation of insertion sort, sorting items in ascending order.
  */
-public class InsertionSort {
+public final class InsertionSort {
+
+    private InsertionSort() { }
 
     /**
      * Sort the given items in ascending order.
@@ -14,7 +16,7 @@ public class InsertionSort {
      * @param items The items to be sorted.
      * @param <T> Type of the items to be sorted.
      */
-    public static <T extends Comparable<T>> void sort(T[] items) {
+    public static <T extends Comparable<T>> void sort(final T[] items) {
         sort(items, Comparable::compareTo);
     }
 
@@ -27,7 +29,7 @@ public class InsertionSort {
      * @param compareFunc Function to compare the given items.
      * @param <T> Type of the items to be sorted.
      */
-    public static <T> void sort(T[] items, Comparator<T> compareFunc) {
+    public static <T> void sort(final T[] items, final Comparator<T> compareFunc) {
         sort(items, 0, items.length - 1, compareFunc);
     }
 
@@ -43,7 +45,8 @@ public class InsertionSort {
      * @param compareFunc Function to compare the given items.
      * @param <T> Type of the items to be sorted.
      */
-    public static <T> void sort(T[] items, int low, int high, Comparator<T> compareFunc) {
+    public static <T> void sort(final T[] items, final int low, final int high,
+                                final Comparator<T> compareFunc) {
 
         // move pointer forward each time, considering the next item which needs to be placed in sorted order
         for (int i = low + 1; i <= high; i++) {
