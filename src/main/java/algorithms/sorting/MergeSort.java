@@ -21,8 +21,9 @@ public class MergeSort {
      * Items implementing comparable can be easily sorted.
      *
      * @param items The items to be sorted.
+     * @param <T> Type of the items to be sorted.
      */
-    public static void sort(Comparable[] items) {
+    public static <T extends Comparable<T>> void sort(T[] items) {
         sort(items, Comparable::compareTo);
     }
 
@@ -36,9 +37,7 @@ public class MergeSort {
      * @param <T> Type of the items to be sorted.
      */
     public static <T> void sort(T[] items, Comparator<T> compareFunc) {
-
         final T[] aux = items.clone(); // create extra array to copy items between
-
         sort(aux, items, 0, items.length - 1, compareFunc);
     }
 
@@ -117,6 +116,5 @@ public class MergeSort {
 
         }
     }
-
 
 }

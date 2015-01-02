@@ -12,8 +12,9 @@ public class SelectionSort {
      * Items implementing comparable can be easily sorted.
      *
      * @param items The items to be sorted.
+     * @param <T> Type of the items to be sorted.
      */
-    public static void sort(Comparable[] items) {
+    public static <T extends Comparable<T>> void sort(T[] items) {
         sort(items, Comparable::compareTo);
     }
 
@@ -48,7 +49,6 @@ public class SelectionSort {
             T temp = items[i];
             items[i] = items[currentMinIndex];
             items[currentMinIndex] = temp;
-
         }
 
     }
