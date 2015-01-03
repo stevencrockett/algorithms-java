@@ -108,14 +108,14 @@ public final class MergeSort {
                 // if we've exhausted elements in the upper half, trivially take from lower half
                 aux[i] = items[lowerPointer];
                 lowerPointer++;
-            } else if (compareFunc.compare(items[lowerPointer], items[upperPointer]) < 0) {
-                // item in lower half < item in the upper half
-                aux[i] = items[lowerPointer];
-                lowerPointer++;
-            } else {
-                // item in upper half <= item in the lower half
+            } else if (compareFunc.compare(items[lowerPointer], items[upperPointer]) > 0) {
+                // item in lower half > item in the upper half
                 aux[i] = items[upperPointer];
                 upperPointer++;
+            } else {
+                // item in lower half <= item in the upper half
+                aux[i] = items[lowerPointer];
+                lowerPointer++;
             }
 
         }
