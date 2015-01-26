@@ -59,6 +59,12 @@ public class SortingTest {
         Assert.assertTrue(isSorted(items));
     }
 
+    @Test
+    public void testHeapSort() {
+        HeapSort.sort(items);
+        Assert.assertTrue(isSorted(items));
+    }
+
 
     private boolean isSorted(final Double[] items) {
         // check that items are in ascending order
