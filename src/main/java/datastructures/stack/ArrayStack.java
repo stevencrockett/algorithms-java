@@ -105,11 +105,12 @@ public class ArrayStack<T> implements Stack<T>, Iterable<T> {
      */
     @Override
     public Optional<T> peek() {
-        if (size > 0) {
-            return Optional.of(items[size - 1]);
-        } else {
+
+        if (size == 0) {
             return Optional.empty();
         }
+
+        return Optional.of(items[size - 1]);
     }
 
 

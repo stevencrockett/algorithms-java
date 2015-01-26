@@ -82,11 +82,12 @@ public class ListStack<T> implements Stack<T> {
      */
     @Override
     public Optional<T> peek() {
-        if (size > 0) {
-            return Optional.of(firstItem.item);
-        } else {
+
+        if (size == 0) {
             return Optional.empty();
         }
+
+        return Optional.of(firstItem.item);
     }
 
 

@@ -52,7 +52,7 @@ public class ListQueue<T> implements Queue<T> {
      * {@inheritDoc}
      */
     @Override
-    public void enqueue(T item) {
+    public void enqueue(final T item) {
         final Node newNode = new Node(item, null);
 
         if (size > 0) {
@@ -73,14 +73,15 @@ public class ListQueue<T> implements Queue<T> {
      */
     @Override
     public Optional<T> dequeue() {
-        if (size > 0) {
-            final T item = firstItem.item; // record first item
-            firstItem = firstItem.next; // move pointer along to the next item in the queue
-            size--;
-            return Optional.of(item);
-        } else {
+
+        if (size == 0) {
             return Optional.empty();
         }
+
+        final T item = firstItem.item; // record first item
+        firstItem = firstItem.next; // move pointer along to the next item in the queue
+        size--;
+        return Optional.of(item);
     }
 
 

@@ -72,34 +72,35 @@ public class ArrayQueue<T> implements Queue<T> {
      * {@inheritDoc}
      */
     @Override
-    public void enqueue(T item) {
+    public void enqueue(final T item) {
 
-        if (size > 0) {
-            // if the array is already at capacity, first grow the array to make space
-            if (size == items.length) {
-
-                final int capacity = items.length;
-
-                // copy queue into a larger array, the head of the queue starting at index 0.
-                final T[] newArray = (T[]) new Object[(int) (items.length * GROWTH_RATE)];
-                for (int i = 0; i < size; i++) {
-                    newArray[i] = items[(frontIndex + i) % items.length];
-                }
-                items = newArray;
-
-                // update indices
-                frontIndex = 0;
-                backIndex = size - 1;
-            }
-
-            // move backpointer along to the next location in the array where the new item will go
-            backIndex = (backIndex + 1) % items.length;
-            items[backIndex] = item;
-
-        } else {
+        if (size == 0) {
             // if the queue is empty then the front index == back index.
             items[frontIndex] = item;
+            size++;
+            return;
         }
+
+        // if the array is already at capacity, first grow the array to make space
+        if (size == items.length) {
+
+            final int capacity = items.length;
+
+            // copy queue into a larger array, the head of the queue starting at index 0.
+            final T[] newArray = (T[]) new Object[(int) (items.length * GROWTH_RATE)];
+            for (int i = 0; i < size; i++) {
+                newArray[i] = items[(frontIndex + i) % items.length];
+            }
+            items = newArray;
+
+            // update indices
+            frontIndex = 0;
+            backIndex = size - 1;
+        }
+
+        // move backpointer along to the next location in the array where the new item will go
+        backIndex = (backIndex + 1) % items.length;
+        items[backIndex] = item;
 
         size++;
     }
@@ -110,36 +111,37 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     public Optional<T> dequeue() {
-        if (size > 0) {
-            // get the head of the queue
-            final T item = items[frontIndex];
-            items[frontIndex] = null; // allow GC to reclaim memory
-            frontIndex = (frontIndex + 1) % items.length;
-            size--;
 
-            // if the array is sufficiently empty, shrink the array to reduce memory
-            if (size <= lowerBound) {
-                final int capacity = items.length;
-                final int newCapacity = (int) (capacity * 0.5f);
-
-                // copy queue into a smaller array, the head of the queue starting at index 0.
-                final T[] newArray = (T[]) new Object[newCapacity];
-                for (int i = 0; i < size; i++) {
-                    newArray[i] = items[(frontIndex + i) % capacity];
-                }
-                items = newArray;
-
-                // update indices
-                frontIndex = 0;
-                backIndex = size - 1;
-
-                lowerBound = (int) (newCapacity * SHRINK_LOWER_BOUND); // compute new lower bound
-            }
-
-            return Optional.of(item);
-        } else {
+        if (size == 0) {
             return Optional.empty();
         }
+
+        // get the head of the queue
+        final T item = items[frontIndex];
+        items[frontIndex] = null; // allow GC to reclaim memory
+        frontIndex = (frontIndex + 1) % items.length;
+        size--;
+
+        // if the array is sufficiently empty, shrink the array to reduce memory
+        if (size <= lowerBound) {
+            final int capacity = items.length;
+            final int newCapacity = (int) (capacity * 0.5f);
+
+            // copy queue into a smaller array, the head of the queue starting at index 0.
+            final T[] newArray = (T[]) new Object[newCapacity];
+            for (int i = 0; i < size; i++) {
+                newArray[i] = items[(frontIndex + i) % capacity];
+            }
+            items = newArray;
+
+            // update indices
+            frontIndex = 0;
+            backIndex = size - 1;
+
+            lowerBound = (int) (newCapacity * SHRINK_LOWER_BOUND); // compute new lower bound
+        }
+
+        return Optional.of(item);
     }
 
 
