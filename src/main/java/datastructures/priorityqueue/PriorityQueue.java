@@ -126,7 +126,7 @@ public class PriorityQueue<T extends Comparable<T>> {
     /**
      * Potentially moves the item at the given index down through the heap such that the item is
      * not smaller than any of its children, keeping in line with the heap order property. If the item
-     * is smaller than both its children, the the item will be swapped with the large of the two.
+     * is smaller than both its children, the the item will be swapped with the larger of the two.
      *
      * @param index Index of the item to try and move down the heap.
      */
