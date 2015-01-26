@@ -50,9 +50,8 @@ public class PriorityQueue<T extends Comparable<T>> {
     }
 
     public PriorityQueue(final int initialCapacity) {
-        final int realCapacity = initialCapacity + 1; // reserve space for the empty 0 index
-        items = (T[]) new Comparable[realCapacity];
-        lowerBound = (int) (realCapacity * SHRINK_LOWER_BOUND);
+        items = (T[]) new Comparable[initialCapacity];
+        lowerBound = (int) (initialCapacity * SHRINK_LOWER_BOUND);
     }
 
 
@@ -62,17 +61,15 @@ public class PriorityQueue<T extends Comparable<T>> {
      * @param item
      */
     public void enqueue(final T item) {
-
-        size++; // new element should be placed at the next free index
-
         // check that the heap has enough space. if not, first increase size and copy
-        // consider the first, empty array element in addition to the actual heap data
         if (size == items.length) {
             items = Arrays.copyOf(items, (int) (items.length * GROWTH_RATE));
         }
 
         items[size] = item; // append item to the end
         swim(size); // swim item up if needed to ensure heap order
+
+        size++; // new element should be placed at the next free index
     }
 
 
@@ -87,16 +84,16 @@ public class PriorityQueue<T extends Comparable<T>> {
             return Optional.empty();
         }
 
-        final T maxItem = items[1]; // get value on top of the heap (with max value)
-        items[1] = items[size]; // copy the last item into the head position
-
-        items[size] = null; // allow GC to reclaim memory
         size--;
 
-        sink(1); // sink item if needed to ensure heap order
+        final T maxItem = items[0]; // get value on top of the heap (with max value)
+        items[0] = items[size]; // copy the last item into the head position
+        items[size] = null; // allow GC to reclaim memory
+
+        sink(0); // sink item if needed to ensure heap order
 
         // check if we need to reduce the size of the array
-        if (size + 1 <= lowerBound) {
+        if (size <= lowerBound) {
             items = Arrays.copyOf(items, (int) (items.length * 0.5f)); // reduce array size by half
             lowerBound = (int) (items.length * SHRINK_LOWER_BOUND); // compute new lower bound
         }
@@ -113,15 +110,15 @@ public class PriorityQueue<T extends Comparable<T>> {
      */
     private void swim(int index) {
 
-        int parent = index / 2;
-        while (index > 1 && items[index].compareTo(items[parent]) > 0) {
+        int parent = (index - 1) / 2;
+        while (index > 0 && items[index].compareTo(items[parent]) > 0) {
 
             final T temp = items[index];
             items[index] = items[parent];
             items[parent] = temp;
 
             index = parent;
-            parent /= 2;
+            parent = (index - 1) / 2;
         }
     }
 
@@ -135,11 +132,11 @@ public class PriorityQueue<T extends Comparable<T>> {
      */
     private void sink(int index) {
 
-        int childIndex = index * 2;
-        while (childIndex <= size) {
+        int childIndex = (index * 2) + 1;
+        while (childIndex < size) {
 
             // check if right child is strictly greater than the left child
-            if (childIndex < size && items[childIndex].compareTo(items[childIndex + 1]) < 0) {
+            if (childIndex + 1 < size && items[childIndex].compareTo(items[childIndex + 1]) < 0) {
                 childIndex++;
             }
 
@@ -154,7 +151,7 @@ public class PriorityQueue<T extends Comparable<T>> {
             items[childIndex] = temp;
 
             index = childIndex;
-            childIndex *= 2;
+            childIndex = (index * 2) + 1;
         }
     }
 
