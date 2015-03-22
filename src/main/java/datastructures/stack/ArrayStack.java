@@ -7,6 +7,8 @@ import java.util.Optional;
 /**
  * Stack implementation backed by an array. The array is grown and contracted
  * depending on how full the stack is, causing elements to be copied.
+ *
+ * @param <T> Type of the items to be stored on the stack.
  */
 public class ArrayStack<T> implements Stack<T>, Iterable<T> {
 
