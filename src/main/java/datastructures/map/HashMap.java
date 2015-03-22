@@ -4,6 +4,9 @@ import java.util.Optional;
 
 /**
  * Unordered map implemented as a hash table with linear probing.
+ *
+ * @param <Key> Type of the keys stored in the map which provide a hash code.
+ * @param <Value> Type of the values stored in the map.
  */
 public class HashMap<Key, Value> implements Map<Key, Value> {
 
