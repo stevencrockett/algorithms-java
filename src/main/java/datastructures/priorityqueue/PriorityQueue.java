@@ -49,6 +49,7 @@ public class PriorityQueue<T extends Comparable<T>> {
         this(DEFAULT_CAPACITY);
     }
 
+    @SuppressWarnings("unchecked")
     public PriorityQueue(final int initialCapacity) {
         items = (T[]) new Comparable[initialCapacity];
         lowerBound = (int) (initialCapacity * SHRINK_LOWER_BOUND);
