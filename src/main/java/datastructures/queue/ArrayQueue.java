@@ -6,6 +6,8 @@ import java.util.Optional;
 /**
  * Queue implementation backed by an array. The array is grown and contracted
  * depending on how full the queue is, causing elements to be copied.
+ *
+ * @param <T> Type of the items to be stored in the queue.
  */
 public class ArrayQueue<T> implements Queue<T> {
 

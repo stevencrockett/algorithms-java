@@ -6,6 +6,8 @@ import java.util.Optional;
 /**
  * Queue implementation backed by a linked list. Pointers to the front and back of
  * the queue are maintained to support enqueue/dequeue operations.
+ *
+ * @param <T> Type of the items to be stored in the queue.
  */
 public class ListQueue<T> implements Queue<T> {
 
