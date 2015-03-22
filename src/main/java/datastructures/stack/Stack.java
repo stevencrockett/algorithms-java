@@ -4,6 +4,8 @@ import java.util.Optional;
 
 /**
  * A stack, allowing elements to be pushed on and popped off the stack in LIFO order.
+ *
+ * @param <T> Type of the items to be stored on the stack.
  */
 public interface Stack<T> extends Iterable<T> {
 

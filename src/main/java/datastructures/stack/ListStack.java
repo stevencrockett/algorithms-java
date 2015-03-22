@@ -6,6 +6,8 @@ import java.util.Optional;
 /**
  * Stack implementation backed by a linked list. Pushed items are inserted/removed from the front of the list
  * for push/pop operations respectively.
+ *
+ * @param <T> Type of the items to be stored on the stack.
  */
 public class ListStack<T> implements Stack<T> {
 
