@@ -5,6 +5,9 @@ import java.util.Optional;
 /**
  * A map (or symbol table, dictionary etc.), allowing keys to be associated with
  * values, such that a value can be obtained given a key.
+ *
+ * @param <Key> Type of the keys stored in the map which can be compared and ordered.
+ * @param <Value> Type of the values stored in the map.
  */
 public interface Map<Key, Value> {
 
