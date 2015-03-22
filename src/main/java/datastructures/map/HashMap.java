@@ -61,6 +61,7 @@ public class HashMap<Key, Value> implements Map<Key, Value> {
         this(DEFAULT_CAPACITY);
     }
 
+    @SuppressWarnings("unchecked")
     public HashMap(final int initialCapacity) {
         keys = (Key[]) new Object[initialCapacity];
         values = (Value[]) new Object[initialCapacity];
@@ -109,6 +110,7 @@ public class HashMap<Key, Value> implements Map<Key, Value> {
      * Grows the map, allowing more key-value pairs to be stored, or can be used to
      * reduce the load (leading to faster insertions and lookups).
      */
+    @SuppressWarnings("unchecked")
     private void grow() {
         final int newCapacity = (int) (capacity * GROWTH_RATE);
 
