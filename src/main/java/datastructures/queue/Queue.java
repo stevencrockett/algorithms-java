@@ -4,6 +4,8 @@ import java.util.Optional;
 
 /**
  * A queue, allowing elements to be enqueued and dequeued in FIFO order.
+ *
+ * @param <T> Type of the items to be stored in the queue.
  */
 public interface Queue<T> extends Iterable<T> {
 
