@@ -5,6 +5,8 @@ import java.util.Optional;
 
 /**
  * Implementation of a priority queue, using a binary heap. Acts as a max heap.
+ *
+ * @param <T> Type of the items to be stored in the priority queue which can be compared and ordered.
  */
 public class PriorityQueue<T extends Comparable<T>> {
 
@@ -59,7 +61,7 @@ public class PriorityQueue<T extends Comparable<T>> {
     /**
      * Adds an item to the priority queue.
      *
-     * @param item
+     * @param item Item to add to the priority queue.
      */
     public void enqueue(final T item) {
         // check that the heap has enough space. if not, first increase size and copy
