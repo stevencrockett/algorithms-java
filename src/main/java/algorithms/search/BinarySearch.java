@@ -47,7 +47,7 @@ public class BinarySearch {
                                                       final Comparator<T> compareFunc) {
 
         int low = 0; // index of the smallest element to consider
-        int high = items.length; // index of the largest element to consider
+        int high = items.length - 1; // index of the largest element to consider
 
         while (low <= high) {
             final int mid = low + ((high - low) / 2); // compute index of middle element
