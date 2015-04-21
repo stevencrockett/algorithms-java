@@ -64,6 +64,7 @@ public class ArrayQueue<T> implements Queue<T> {
         this(DEFAULT_CAPACITY);
     }
 
+    @SuppressWarnings("unchecked")
     public ArrayQueue(final int initialCapacity) {
         items = (T[]) new Object[initialCapacity];
         lowerBound = (int) (initialCapacity * SHRINK_LOWER_BOUND);
@@ -74,7 +75,8 @@ public class ArrayQueue<T> implements Queue<T> {
      * {@inheritDoc}
      */
     @Override
-    public void enqueue(final T item) {
+    @SuppressWarnings("unchecked")
+    public void enqueue(T item) {
 
         if (size == 0) {
             // if the queue is empty then the front index == back index.
@@ -85,8 +87,6 @@ public class ArrayQueue<T> implements Queue<T> {
 
         // if the array is already at capacity, first grow the array to make space
         if (size == items.length) {
-
-            final int capacity = items.length;
 
             // copy queue into a larger array, the head of the queue starting at index 0.
             final T[] newArray = (T[]) new Object[(int) (items.length * GROWTH_RATE)];
@@ -112,6 +112,7 @@ public class ArrayQueue<T> implements Queue<T> {
      * {@inheritDoc}
      */
     @Override
+    @SuppressWarnings("unchecked")
     public Optional<T> dequeue() {
 
         if (size == 0) {
@@ -138,7 +139,7 @@ public class ArrayQueue<T> implements Queue<T> {
 
             // update indices
             frontIndex = 0;
-            backIndex = size - 1;
+            backIndex = size > 0 ? size - 1 : 0; // account for if size == 0
 
             lowerBound = (int) (newCapacity * SHRINK_LOWER_BOUND); // compute new lower bound
         }
