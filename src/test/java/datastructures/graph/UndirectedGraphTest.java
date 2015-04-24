@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Iterator;
+
 public class UndirectedGraphTest {
 
     private UndirectedGraph graph;
@@ -25,7 +27,7 @@ public class UndirectedGraphTest {
         // check adjacent vertices for each vertex
         for (int i = 0; i < VERTEX_COUNT; i++) {
             // vertex should have no adjacent vertices, so fail immediately
-            if (graph.adj(i).iterator().hasNext()) {
+            if (graph.adj(i).hasNext()) {
                 Assert.fail();
             }
         }
@@ -36,7 +38,10 @@ public class UndirectedGraphTest {
         graph.addEdge(0, 1);
 
         int adjCount = 0;
-        for (final int adj : graph.adj(0)) {
+        Iterator<Integer> adjacent = graph.adj(0);
+
+        while (adjacent.hasNext()) {
+            final int adj = adjacent.next();
             // vertex 1 should be the only adjacent vertex
             if (adj != 1) {
                 Assert.fail();
@@ -49,7 +54,9 @@ public class UndirectedGraphTest {
         }
 
         adjCount = 0;
-        for (final int adj : graph.adj(1)) {
+        adjacent = graph.adj(1);
+        while (adjacent.hasNext()) {
+            final int adj = adjacent.next();
             // vertex 0 should be the only adjacent vertex
             if (adj != 0) {
                 Assert.fail();
