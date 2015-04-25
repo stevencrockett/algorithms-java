@@ -14,7 +14,7 @@ public interface Stack<T> extends Iterable<T> {
      *
      * @param item Object to be pushed.
      */
-    public void push(final T item);
+    void push(final T item);
 
 
     /**
@@ -23,7 +23,7 @@ public interface Stack<T> extends Iterable<T> {
      *
      * @return Optional containing the item on top of the stack if present.
      */
-    public Optional<T> pop();
+    Optional<T> pop();
 
 
     /**
@@ -32,7 +32,7 @@ public interface Stack<T> extends Iterable<T> {
      *
      * @return Optional containing the item on top of the stack if present.
      */
-    public Optional<T> peek();
+    Optional<T> peek();
 
 
     /**
@@ -40,7 +40,7 @@ public interface Stack<T> extends Iterable<T> {
      *
      * @return The number of items in the stack.
      */
-    public int size();
+    int size();
 
 
     /**
@@ -48,6 +48,6 @@ public interface Stack<T> extends Iterable<T> {
      *
      * @return <CODE>true</CODE> if there are no items on the stack; <CODE>false</CODE> otherwise.
      */
-    public boolean isEmpty();
+    boolean isEmpty();
 
 }
