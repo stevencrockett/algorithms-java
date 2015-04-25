@@ -49,11 +49,9 @@ public class ListStack<T> implements Stack<T> {
     @Override
     public void push(final T item) {
 
-        // create new node in the list that points to the existing list
-        final Node newItem = new Node(item, firstItem);
+        // create new node in the list that points to the start of the existing list
+        firstItem = new Node(item, firstItem);
 
-        //set the new node as the start of the list
-        firstItem = newItem;
         size++;
     }
 

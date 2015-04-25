@@ -53,6 +53,7 @@ public class ArrayStack<T> implements Stack<T>, Iterable<T> {
         this(DEFAULT_CAPACITY);
     }
 
+    @SuppressWarnings("unchecked")
     public ArrayStack(final int initialCapacity) {
         items = (T[]) new Object[initialCapacity];
         lowerBound = (int) (initialCapacity * SHRINK_LOWER_BOUND);
