@@ -17,7 +17,7 @@ public interface Map<Key, Value> {
      * @param key Key to associate with the given value.
      * @param value Value that the key should map to.
      */
-    public void put(Key key, Value value);
+    void put(Key key, Value value);
 
 
     /**
@@ -26,7 +26,7 @@ public interface Map<Key, Value> {
      * @param key Key to find in the map.
      * @return Optional containing the value associated with the key if the key is contained in the map.
      */
-    public Optional<Value> get(Key key);
+    Optional<Value> get(Key key);
 
 
     /**
@@ -34,7 +34,7 @@ public interface Map<Key, Value> {
      *
      * @param key Key to find in the map.
      */
-    public void delete(Key key);
+    void delete(Key key);
 
 
     /**
@@ -43,7 +43,7 @@ public interface Map<Key, Value> {
      * @param key Key to find in the map.
      * @return <CODE>true</CODE> if the key is present; <CODE>false</CODE> otherwise.
      */
-    public boolean contains(Key key);
+    boolean contains(Key key);
 
 
     /**
@@ -51,6 +51,6 @@ public interface Map<Key, Value> {
      *
      * @return The number of key-value pairs in the map.
      */
-    public int size();
+    int size();
 
 }

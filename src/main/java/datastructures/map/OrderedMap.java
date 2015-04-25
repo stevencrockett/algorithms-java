@@ -13,7 +13,7 @@ public interface OrderedMap<Key extends Comparable<Key>, Value> extends Map<Key,
      *
      * @return Optional containing the smallest key in the map if it exists.
      */
-    public Optional<Key> min();
+    Optional<Key> min();
 
 
     /**
@@ -21,7 +21,7 @@ public interface OrderedMap<Key extends Comparable<Key>, Value> extends Map<Key,
      *
      * @return Optional containing the largest key in the map if it exists.
      */
-    public Optional<Key> max();
+    Optional<Key> max();
 
 
     /**
@@ -30,7 +30,7 @@ public interface OrderedMap<Key extends Comparable<Key>, Value> extends Map<Key,
      * @param key Key to find the next key smaller than.
      * @return Optional containing the next smallest key in the map if it exists.
      */
-    public Optional<Key> predecessor(Key key);
+    Optional<Key> predecessor(Key key);
 
 
     /**
@@ -39,6 +39,6 @@ public interface OrderedMap<Key extends Comparable<Key>, Value> extends Map<Key,
      * @param key Key to find the next key greater than.
      * @return Optional containing the next largest key in the map if it exists.
      */
-    public Optional<Key> successor(Key key);
+    Optional<Key> successor(Key key);
 
 }
