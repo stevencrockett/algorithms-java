@@ -14,7 +14,7 @@ public interface Queue<T> extends Iterable<T> {
      *
      * @param item Object to be added.
      */
-    public void enqueue(final T item);
+    void enqueue(final T item);
 
 
     /**
@@ -23,7 +23,7 @@ public interface Queue<T> extends Iterable<T> {
      *
      * @return Optional containing the item at the front of the queue if present.
      */
-    public Optional<T> dequeue();
+    Optional<T> dequeue();
 
 
     /**
@@ -31,7 +31,7 @@ public interface Queue<T> extends Iterable<T> {
      *
      * @return The number of items in the queue.
      */
-    public int size();
+    int size();
 
 
     /**
@@ -39,5 +39,5 @@ public interface Queue<T> extends Iterable<T> {
      *
      * @return <CODE>true</CODE> if there are no items in the queue; <CODE>false</CODE> otherwise.
      */
-    public boolean isEmpty();
+    boolean isEmpty();
 }
