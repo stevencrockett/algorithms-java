@@ -94,8 +94,8 @@ public class ArrayStack<T> implements Stack<T>, Iterable<T> {
         items[size] = null; // allow GC to reclaim memory
 
         // check if we need to reduce the size of the array
-        if (size <= lowerBound) {
-            items = Arrays.copyOf(items, (int) (items.length * 0.5f)); // reduce array size by half
+        if (size < lowerBound) {
+            items = Arrays.copyOf(items, 1 + (int) (items.length * 0.5f)); // reduce array size by roughly half
             lowerBound = (int) (items.length * SHRINK_LOWER_BOUND); // compute new lower bound
         }
 
