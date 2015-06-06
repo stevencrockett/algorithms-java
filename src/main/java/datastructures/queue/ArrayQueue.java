@@ -126,9 +126,9 @@ public class ArrayQueue<T> implements Queue<T> {
         size--;
 
         // if the array is sufficiently empty, shrink the array to reduce memory
-        if (size <= lowerBound) {
+        if (size < lowerBound) {
             final int capacity = items.length;
-            final int newCapacity = (int) (capacity * 0.5f);
+            final int newCapacity = 1 + (int) (capacity * 0.5f);
 
             // copy queue into a smaller array, the head of the queue starting at index 0.
             final T[] newArray = (T[]) new Object[newCapacity];
