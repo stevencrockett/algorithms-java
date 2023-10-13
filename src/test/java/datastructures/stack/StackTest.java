@@ -1,8 +1,8 @@
 package datastructures.stack;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -16,44 +16,44 @@ public abstract class StackTest {
 
     protected Stack<Integer> stack;
 
-    @Before
+    @BeforeEach
     public abstract void initialise();
 
     @Test
     public void testEmptyStackSize() {
-        Assert.assertEquals(0, stack.size());
+        Assertions.assertEquals(0, stack.size());
     }
 
     @Test
     public void testEmptyStackIsEmpty() {
-        Assert.assertTrue(stack.isEmpty());
+        Assertions.assertTrue(stack.isEmpty());
     }
 
     @Test
     public void testNonEmptyStackSize() {
         final int someValue = 1;
 
-        Assert.assertEquals(0, stack.size());
+        Assertions.assertEquals(0, stack.size());
 
         stack.push(someValue);
-        Assert.assertEquals(1, stack.size());
+        Assertions.assertEquals(1, stack.size());
 
         stack.push(someValue);
-        Assert.assertEquals(2, stack.size());
+        Assertions.assertEquals(2, stack.size());
     }
 
     @Test
     public void testNonEmptyStackIsNonEmpty() {
-        Assert.assertTrue(stack.isEmpty());
+        Assertions.assertTrue(stack.isEmpty());
 
         stack.push(1);
-        Assert.assertFalse(stack.isEmpty());
+        Assertions.assertFalse(stack.isEmpty());
     }
 
     @Test
     public void testEmptyPop() {
         final Optional<Integer> result = stack.pop();
-        Assert.assertFalse(result.isPresent());
+        Assertions.assertFalse(result.isPresent());
     }
 
     @Test
@@ -62,7 +62,7 @@ public abstract class StackTest {
         stack.push(pushedValue);
 
         final Optional<Integer> result = stack.pop();
-        Assert.assertEquals(pushedValue, result.get().intValue());
+        Assertions.assertEquals(pushedValue, result.get().intValue());
     }
 
     @Test
@@ -72,8 +72,8 @@ public abstract class StackTest {
         stack.push(firstValue);
         stack.push(secondValue);
 
-        Assert.assertEquals(secondValue, stack.pop().get().intValue());
-        Assert.assertEquals(firstValue, stack.pop().get().intValue());
+        Assertions.assertEquals(secondValue, stack.pop().get().intValue());
+        Assertions.assertEquals(firstValue, stack.pop().get().intValue());
     }
 
     @Test
@@ -85,14 +85,14 @@ public abstract class StackTest {
         }
 
         for (int i = limit - 1; i >= 0; i--) {
-            Assert.assertEquals(i, stack.pop().get().intValue());
+            Assertions.assertEquals(i, stack.pop().get().intValue());
         }
     }
 
     @Test
     public void testPeekEmptyStack() {
         final Optional<Integer> noValue = stack.peek();
-        Assert.assertFalse(noValue.isPresent());
+        Assertions.assertFalse(noValue.isPresent());
     }
 
     @Test
@@ -101,7 +101,7 @@ public abstract class StackTest {
         stack.push(pushedValue);
 
         final Optional<Integer> value = stack.peek();
-        Assert.assertEquals(pushedValue, value.get().intValue());
+        Assertions.assertEquals(pushedValue, value.get().intValue());
     }
 
     @Test
@@ -114,7 +114,7 @@ public abstract class StackTest {
         int expectedItem = numItems - 1;
 
         for (Integer i : stack) {
-            Assert.assertEquals(expectedItem, stack.pop().get().intValue());
+            Assertions.assertEquals(expectedItem, stack.pop().get().intValue());
             expectedItem--;
         }
     }

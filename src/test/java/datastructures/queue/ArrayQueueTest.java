@@ -1,14 +1,14 @@
 package datastructures.queue;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ArrayQueueTest extends QueueTest {
 
     private static final int STARTING_SIZE = 10;
 
-    @Before
+    @BeforeEach
     public void initialise() {
         queue = new ArrayQueue<>(STARTING_SIZE);
     }
@@ -25,8 +25,8 @@ public class ArrayQueueTest extends QueueTest {
         queue.enqueue(secondValue);
         queue.enqueue(thirdValue);
 
-        Assert.assertEquals(secondValue, queue.dequeue().get().intValue());
-        Assert.assertEquals(thirdValue, queue.dequeue().get().intValue());
+        Assertions.assertEquals(secondValue, queue.dequeue().get().intValue());
+        Assertions.assertEquals(thirdValue, queue.dequeue().get().intValue());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class ArrayQueueTest extends QueueTest {
         // check that we can still use the queue normally
         final int otherInt = 5;
         smallQueue.enqueue(otherInt);
-        Assert.assertEquals(otherInt, smallQueue.dequeue().get().intValue());
+        Assertions.assertEquals(otherInt, smallQueue.dequeue().get().intValue());
     }
 
 }

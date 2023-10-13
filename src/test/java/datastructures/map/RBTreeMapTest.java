@@ -1,14 +1,14 @@
 package datastructures.map;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class RBTreeMapTest extends OrderedMapTest {
 
     private RBTreeMap<String, Integer> treeMap;
 
-    @Before
+    @BeforeEach
     public void initialise() {
         treeMap = new RBTreeMap<>();
         orderedMap = treeMap;
@@ -27,8 +27,8 @@ public class RBTreeMapTest extends OrderedMapTest {
 
         treeMap.delete(secondKey);
 
-        Assert.assertTrue(treeMap.contains(firstKey));
-        Assert.assertFalse(treeMap.contains(secondKey));
+        Assertions.assertTrue(treeMap.contains(firstKey));
+        Assertions.assertFalse(treeMap.contains(secondKey));
     }
 
     @Test
@@ -45,9 +45,9 @@ public class RBTreeMapTest extends OrderedMapTest {
 
         treeMap.delete(secondKey);
 
-        Assert.assertTrue(treeMap.contains(firstKey));
-        Assert.assertTrue(treeMap.contains(thirdKey));
-        Assert.assertFalse(treeMap.contains(secondKey));
+        Assertions.assertTrue(treeMap.contains(firstKey));
+        Assertions.assertTrue(treeMap.contains(thirdKey));
+        Assertions.assertFalse(treeMap.contains(secondKey));
     }
 
     @Test
@@ -68,10 +68,10 @@ public class RBTreeMapTest extends OrderedMapTest {
 
         treeMap.delete(secondKey);
 
-        Assert.assertTrue(treeMap.contains(firstKey));
-        Assert.assertTrue(treeMap.contains(thirdKey));
-        Assert.assertTrue(treeMap.contains(fourthKey));
-        Assert.assertFalse(treeMap.contains(secondKey));
+        Assertions.assertTrue(treeMap.contains(firstKey));
+        Assertions.assertTrue(treeMap.contains(thirdKey));
+        Assertions.assertTrue(treeMap.contains(fourthKey));
+        Assertions.assertFalse(treeMap.contains(secondKey));
     }
 
 }

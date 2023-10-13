@@ -1,7 +1,7 @@
 package datastructures.map;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
@@ -16,7 +16,7 @@ public abstract class MapTest {
 
     @Test
     public void testEmptyMapSize() {
-        Assert.assertEquals(0, map.size());
+        Assertions.assertEquals(0, map.size());
     }
 
     @Test
@@ -24,10 +24,10 @@ public abstract class MapTest {
         final String someKey = "London";
         final int someValue = 1;
 
-        Assert.assertEquals(0, map.size());
+        Assertions.assertEquals(0, map.size());
 
         map.put(someKey, someValue);
-        Assert.assertEquals(1, map.size());
+        Assertions.assertEquals(1, map.size());
     }
 
     @Test
@@ -35,14 +35,14 @@ public abstract class MapTest {
         final String missingKey = "thing";
 
         final Optional<Integer> result = map.get(missingKey);
-        Assert.assertFalse(result.isPresent());
+        Assertions.assertFalse(result.isPresent());
     }
 
     @Test
     public void testMissingKeyContains() {
         final String missingKey = "thing";
 
-        Assert.assertFalse(map.contains(missingKey));
+        Assertions.assertFalse(map.contains(missingKey));
     }
 
     @Test
@@ -53,7 +53,7 @@ public abstract class MapTest {
         map.put(someKey, someValue);
 
         final Optional<Integer> result = map.get(someKey);
-        Assert.assertEquals(someValue, result.get().intValue());
+        Assertions.assertEquals(someValue, result.get().intValue());
     }
 
     @Test
@@ -63,7 +63,7 @@ public abstract class MapTest {
 
         map.put(someKey, someValue);
 
-        Assert.assertTrue(map.contains(someKey));
+        Assertions.assertTrue(map.contains(someKey));
     }
 
     @Test
@@ -76,8 +76,8 @@ public abstract class MapTest {
         final int secondValue = 2;
         map.put(secondKey, secondValue);
 
-        Assert.assertEquals(firstValue, map.get(firstKey).get().intValue());
-        Assert.assertEquals(secondValue, map.get(secondKey).get().intValue());
+        Assertions.assertEquals(firstValue, map.get(firstKey).get().intValue());
+        Assertions.assertEquals(secondValue, map.get(secondKey).get().intValue());
     }
 
     @Test
@@ -90,8 +90,8 @@ public abstract class MapTest {
         final int secondValue = 2;
         map.put(secondKey, secondValue);
 
-        Assert.assertTrue(map.contains(firstKey));
-        Assert.assertTrue(map.contains(secondKey));
+        Assertions.assertTrue(map.contains(firstKey));
+        Assertions.assertTrue(map.contains(secondKey));
     }
 
     @Test
@@ -105,7 +105,7 @@ public abstract class MapTest {
 
         map.put(someKey, newValue);
 
-        Assert.assertEquals(newValue, map.get(someKey).get().intValue());
+        Assertions.assertEquals(newValue, map.get(someKey).get().intValue());
     }
 
     @Test
@@ -114,12 +114,12 @@ public abstract class MapTest {
         final int someValue = 1;
 
         map.put(someKey, someValue);
-        Assert.assertEquals(1, map.size());
+        Assertions.assertEquals(1, map.size());
 
         final int newValue = 5;
 
         map.put(someKey, newValue);
-        Assert.assertEquals(1, map.size());
+        Assertions.assertEquals(1, map.size());
     }
 
     @Test
@@ -134,7 +134,7 @@ public abstract class MapTest {
 
         map.delete(someKey);
 
-        Assert.assertEquals(1, map.size());
+        Assertions.assertEquals(1, map.size());
     }
 
     @Test
@@ -149,7 +149,7 @@ public abstract class MapTest {
 
         map.delete(someKey);
 
-        Assert.assertFalse(map.contains(someKey));
+        Assertions.assertFalse(map.contains(someKey));
     }
 
     @Test
@@ -165,7 +165,7 @@ public abstract class MapTest {
         map.delete(someKey);
 
         final Optional<Integer> result = map.get(someKey);
-        Assert.assertFalse(result.isPresent());
+        Assertions.assertFalse(result.isPresent());
     }
 
 }

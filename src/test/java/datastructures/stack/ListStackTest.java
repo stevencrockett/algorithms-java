@@ -1,10 +1,10 @@
 package datastructures.stack;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 
 public class ListStackTest extends StackTest {
 
-    @Before
+    @BeforeEach
     public void initialise() {
         stack = new ListStack<>();
     }

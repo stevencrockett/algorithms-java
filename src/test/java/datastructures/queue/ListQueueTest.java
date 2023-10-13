@@ -1,10 +1,10 @@
 package datastructures.queue;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 
 public class ListQueueTest extends QueueTest {
 
-    @Before
+    @BeforeEach
     public void initialise() {
         queue = new ListQueue<>();
     }

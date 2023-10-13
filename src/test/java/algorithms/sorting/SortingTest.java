@@ -1,8 +1,8 @@
 package algorithms.sorting;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -12,7 +12,7 @@ public class SortingTest {
 
     private static final int ITEM_COUNT = 10000;
 
-    @Before
+    @BeforeEach
     public void initialise() {
         do {
             items = ThreadLocalRandom.current().doubles()
@@ -26,43 +26,43 @@ public class SortingTest {
     @Test
     public void testSelectionSort() {
         SelectionSort.sort(items);
-        Assert.assertTrue(isSorted(items));
+        Assertions.assertTrue(isSorted(items));
     }
 
     @Test
     public void testBubbleSort() {
         BubbleSort.sort(items);
-        Assert.assertTrue(isSorted(items));
+        Assertions.assertTrue(isSorted(items));
     }
 
     @Test
     public void testInsertionSort() {
         InsertionSort.sort(items);
-        Assert.assertTrue(isSorted(items));
+        Assertions.assertTrue(isSorted(items));
     }
 
     @Test
     public void testShellSort() {
         ShellSort.sort(items);
-        Assert.assertTrue(isSorted(items));
+        Assertions.assertTrue(isSorted(items));
     }
 
     @Test
     public void testMergeSort() {
         MergeSort.sort(items);
-        Assert.assertTrue(isSorted(items));
+        Assertions.assertTrue(isSorted(items));
     }
 
     @Test
     public void testQuickSort() {
         QuickSort.sort(items);
-        Assert.assertTrue(isSorted(items));
+        Assertions.assertTrue(isSorted(items));
     }
 
     @Test
     public void testHeapSort() {
         HeapSort.sort(items);
-        Assert.assertTrue(isSorted(items));
+        Assertions.assertTrue(isSorted(items));
     }
 
 

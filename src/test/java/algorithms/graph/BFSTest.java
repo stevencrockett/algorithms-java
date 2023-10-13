@@ -2,8 +2,8 @@ package algorithms.graph;
 
 import datastructures.graph.DirectedGraph;
 import datastructures.graph.UndirectedGraph;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -35,12 +35,12 @@ public class BFSTest {
         final int rootVertex = 0; // perform search from vertex 0
         final BFS bfs = new BFS(g, rootVertex);
 
-        Assert.assertTrue(bfs.hasPathTo(1));
-        Assert.assertTrue(bfs.hasPathTo(2));
-        Assert.assertTrue(bfs.hasPathTo(3));
+        Assertions.assertTrue(bfs.hasPathTo(1));
+        Assertions.assertTrue(bfs.hasPathTo(2));
+        Assertions.assertTrue(bfs.hasPathTo(3));
 
         // vertex 4 is disconnected in the graph
-        Assert.assertFalse(bfs.hasPathTo(4));
+        Assertions.assertFalse(bfs.hasPathTo(4));
     }
 
     @Test
@@ -49,12 +49,12 @@ public class BFSTest {
         final int rootVertex = 0; // perform search from vertex 0
         final BFS bfs = new BFS(g, rootVertex);
 
-        Assert.assertFalse(bfs.pathTo(4).isPresent());
+        Assertions.assertFalse(bfs.pathTo(4).isPresent());
 
         // verify the path from vertex 0 to vertex 3
         final Optional<Iterator<Integer>> path = bfs.pathTo(3);
 
-        Assert.assertTrue(path.isPresent());
+        Assertions.assertTrue(path.isPresent());
 
         final LinkedList<Integer> actualPath = new LinkedList<>();
         path.get().forEachRemaining(actualPath::add);
@@ -64,7 +64,7 @@ public class BFSTest {
         expectedPath.add(1);
         expectedPath.add(3);
 
-        Assert.assertEquals(expectedPath, actualPath);
+        Assertions.assertEquals(expectedPath, actualPath);
     }
 
     @Test
@@ -81,7 +81,7 @@ public class BFSTest {
         expectedOrder.add(2);
         expectedOrder.add(3);
 
-        Assert.assertEquals(expectedOrder, actualOrder);
+        Assertions.assertEquals(expectedOrder, actualOrder);
     }
 
 
@@ -91,12 +91,12 @@ public class BFSTest {
         final int rootVertex = 0; // perform search from vertex 0
         final BFS bfs = new BFS(g, rootVertex);
 
-        Assert.assertTrue(bfs.hasPathTo(1));
-        Assert.assertTrue(bfs.hasPathTo(2));
-        Assert.assertTrue(bfs.hasPathTo(3));
+        Assertions.assertTrue(bfs.hasPathTo(1));
+        Assertions.assertTrue(bfs.hasPathTo(2));
+        Assertions.assertTrue(bfs.hasPathTo(3));
 
         // vertex 4 is disconnected in the graph
-        Assert.assertFalse(bfs.hasPathTo(4));
+        Assertions.assertFalse(bfs.hasPathTo(4));
     }
 
     @Test
@@ -105,12 +105,12 @@ public class BFSTest {
         final int rootVertex = 0; // perform search from vertex 0
         final BFS bfs = new BFS(g, rootVertex);
 
-        Assert.assertFalse(bfs.pathTo(4).isPresent());
+        Assertions.assertFalse(bfs.pathTo(4).isPresent());
 
         // verify the path from vertex 0 to vertex 3
         final Optional<Iterator<Integer>> path = bfs.pathTo(3);
 
-        Assert.assertTrue(path.isPresent());
+        Assertions.assertTrue(path.isPresent());
 
         final LinkedList<Integer> actualPath = new LinkedList<>();
         path.get().forEachRemaining(actualPath::add);
@@ -120,7 +120,7 @@ public class BFSTest {
         expectedPath.add(1);
         expectedPath.add(3);
 
-        Assert.assertEquals(expectedPath, actualPath);
+        Assertions.assertEquals(expectedPath, actualPath);
     }
 
     @Test
@@ -137,7 +137,7 @@ public class BFSTest {
         expectedOrder.add(2);
         expectedOrder.add(3);
 
-        Assert.assertEquals(expectedOrder, actualOrder);
+        Assertions.assertEquals(expectedOrder, actualOrder);
     }
 
 }

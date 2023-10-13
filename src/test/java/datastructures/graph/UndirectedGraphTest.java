@@ -1,8 +1,8 @@
 package datastructures.graph;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
 
@@ -12,14 +12,14 @@ public class UndirectedGraphTest {
 
     private static final int VERTEX_COUNT = 10;
 
-    @Before
+    @BeforeEach
     public void initialise() {
         graph = new UndirectedGraph(VERTEX_COUNT);
     }
 
     @Test
     public void testGraphSize() {
-        Assert.assertEquals(VERTEX_COUNT, graph.vertexCount());
+        Assertions.assertEquals(VERTEX_COUNT, graph.vertexCount());
     }
 
     @Test
@@ -28,7 +28,7 @@ public class UndirectedGraphTest {
         for (int i = 0; i < VERTEX_COUNT; i++) {
             // vertex should have no adjacent vertices, so fail immediately
             if (graph.adj(i).hasNext()) {
-                Assert.fail();
+                Assertions.fail();
             }
         }
     }
@@ -44,13 +44,13 @@ public class UndirectedGraphTest {
             final int adj = adjacent.next();
             // vertex 1 should be the only adjacent vertex
             if (adj != 1) {
-                Assert.fail();
+                Assertions.fail();
             }
             adjCount++;
         }
 
         if (adjCount != 1) {
-            Assert.fail();
+            Assertions.fail();
         }
 
         adjCount = 0;
@@ -59,13 +59,13 @@ public class UndirectedGraphTest {
             final int adj = adjacent.next();
             // vertex 0 should be the only adjacent vertex
             if (adj != 0) {
-                Assert.fail();
+                Assertions.fail();
             }
             adjCount++;
         }
 
         if (adjCount != 1) {
-            Assert.fail();
+            Assertions.fail();
         }
     }
 

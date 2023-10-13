@@ -1,7 +1,7 @@
 package datastructures.map;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
@@ -31,8 +31,8 @@ public abstract class OrderedMapTest extends MapTest {
 
         final Optional<String> minimum = orderedMap.min();
 
-        Assert.assertTrue(minimum.isPresent());
-        Assert.assertEquals(thirdKey, minimum.get());
+        Assertions.assertTrue(minimum.isPresent());
+        Assertions.assertEquals(thirdKey, minimum.get());
     }
 
     @Test
@@ -52,8 +52,8 @@ public abstract class OrderedMapTest extends MapTest {
 
         final Optional<String> maximum = orderedMap.max();
 
-        Assert.assertTrue(maximum.isPresent());
-        Assert.assertEquals(secondKey, maximum.get());
+        Assertions.assertTrue(maximum.isPresent());
+        Assertions.assertEquals(secondKey, maximum.get());
     }
 
     @Test
@@ -72,12 +72,12 @@ public abstract class OrderedMapTest extends MapTest {
         orderedMap.put(thirdKey, thirdValue);
 
         final Optional<String> firstPredecessor = orderedMap.predecessor(secondKey);
-        Assert.assertTrue(firstPredecessor.isPresent());
-        Assert.assertEquals(firstKey, firstPredecessor.get());
+        Assertions.assertTrue(firstPredecessor.isPresent());
+        Assertions.assertEquals(firstKey, firstPredecessor.get());
 
         final Optional<String> secondPredecessor = orderedMap.predecessor(firstKey);
-        Assert.assertTrue(secondPredecessor.isPresent());
-        Assert.assertEquals(thirdKey, secondPredecessor.get());
+        Assertions.assertTrue(secondPredecessor.isPresent());
+        Assertions.assertEquals(thirdKey, secondPredecessor.get());
     }
 
     @Test
@@ -96,7 +96,7 @@ public abstract class OrderedMapTest extends MapTest {
         orderedMap.put(thirdKey, thirdValue);
 
         final Optional<String> predecessor = orderedMap.predecessor(thirdKey);
-        Assert.assertFalse(predecessor.isPresent());
+        Assertions.assertFalse(predecessor.isPresent());
     }
 
     @Test
@@ -115,12 +115,12 @@ public abstract class OrderedMapTest extends MapTest {
         orderedMap.put(thirdKey, thirdValue);
 
         final Optional<String> firstSuccessor = orderedMap.successor(thirdKey);
-        Assert.assertTrue(firstSuccessor.isPresent());
-        Assert.assertEquals(firstKey, firstSuccessor.get());
+        Assertions.assertTrue(firstSuccessor.isPresent());
+        Assertions.assertEquals(firstKey, firstSuccessor.get());
 
         final Optional<String> secondSuccessor = orderedMap.successor(firstKey);
-        Assert.assertTrue(secondSuccessor.isPresent());
-        Assert.assertEquals(secondKey, secondSuccessor.get());
+        Assertions.assertTrue(secondSuccessor.isPresent());
+        Assertions.assertEquals(secondKey, secondSuccessor.get());
     }
 
     @Test
@@ -139,7 +139,7 @@ public abstract class OrderedMapTest extends MapTest {
         orderedMap.put(thirdKey, thirdValue);
 
         final Optional<String> successor = orderedMap.successor(secondKey);
-        Assert.assertFalse(successor.isPresent());
+        Assertions.assertFalse(successor.isPresent());
     }
 
 }

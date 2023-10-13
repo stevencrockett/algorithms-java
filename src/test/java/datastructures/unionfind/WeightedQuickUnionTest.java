@@ -1,10 +1,10 @@
 package datastructures.unionfind;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 
 public class WeightedQuickUnionTest extends UnionFindTest {
 
-    @Before
+    @BeforeEach
     public void initialise() {
         uf = new WeightedQuickUnion(VERTEX_COUNT);
     }

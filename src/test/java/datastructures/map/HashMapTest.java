@@ -1,14 +1,14 @@
 package datastructures.map;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class HashMapTest extends MapTest {
 
     private static final int STARTING_CAPACITY = 20;
 
-    @Before
+    @BeforeEach
     public void initialise() {
         map = new HashMap<>(STARTING_CAPACITY);
     }
@@ -21,7 +21,7 @@ public class HashMapTest extends MapTest {
         }
 
         for (int i = 0; i < limit; i++) {
-            Assert.assertTrue(map.contains(String.valueOf(i)));
+            Assertions.assertTrue(map.contains(String.valueOf(i)));
         }
     }
 }

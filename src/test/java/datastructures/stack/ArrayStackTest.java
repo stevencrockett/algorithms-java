@@ -1,14 +1,14 @@
 package datastructures.stack;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ArrayStackTest extends StackTest {
 
     private static final int STARTING_SIZE = 10;
 
-    @Before
+    @BeforeEach
     public void initialise() {
         stack = new ArrayStack<>(STARTING_SIZE);
     }
@@ -25,8 +25,8 @@ public class ArrayStackTest extends StackTest {
         stack.push(secondValue);
         stack.push(thirdValue);
 
-        Assert.assertEquals(thirdValue, stack.pop().get().intValue());
-        Assert.assertEquals(secondValue, stack.pop().get().intValue());
+        Assertions.assertEquals(thirdValue, stack.pop().get().intValue());
+        Assertions.assertEquals(secondValue, stack.pop().get().intValue());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class ArrayStackTest extends StackTest {
         // check that we can still use the stack normally
         final int otherInt = 5;
         smallStack.push(otherInt);
-        Assert.assertEquals(otherInt, smallStack.pop().get().intValue());
+        Assertions.assertEquals(otherInt, smallStack.pop().get().intValue());
     }
 
 }

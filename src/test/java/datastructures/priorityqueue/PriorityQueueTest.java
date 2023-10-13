@@ -1,8 +1,8 @@
 package datastructures.priorityqueue;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -13,46 +13,46 @@ public class PriorityQueueTest {
 
     private PriorityQueue<Integer> heap;
 
-    @Before
+    @BeforeEach
     public void initialise() {
         heap = new PriorityQueue<>(STARTING_SIZE);
     }
 
     @Test
     public void testEmptyHeapSize() {
-        Assert.assertEquals(0, heap.size());
+        Assertions.assertEquals(0, heap.size());
     }
 
     @Test
     public void testEmptyHeapIsEmpty() {
-        Assert.assertTrue(heap.isEmpty());
+        Assertions.assertTrue(heap.isEmpty());
     }
 
     @Test
     public void testNonEmptyHeapSize() {
         final int someValue = 1;
 
-        Assert.assertEquals(0, heap.size());
+        Assertions.assertEquals(0, heap.size());
 
         heap.enqueue(someValue);
-        Assert.assertEquals(1, heap.size());
+        Assertions.assertEquals(1, heap.size());
 
         heap.enqueue(someValue);
-        Assert.assertEquals(2, heap.size());
+        Assertions.assertEquals(2, heap.size());
     }
 
     @Test
     public void testNonEmptyHeapIsNonEmpty() {
-        Assert.assertTrue(heap.isEmpty());
+        Assertions.assertTrue(heap.isEmpty());
 
         heap.enqueue(1);
-        Assert.assertFalse(heap.isEmpty());
+        Assertions.assertFalse(heap.isEmpty());
     }
 
     @Test
     public void testEmptyDequeue() {
         final Optional<Integer> result = heap.dequeue();
-        Assert.assertFalse(result.isPresent());
+        Assertions.assertFalse(result.isPresent());
     }
 
     @Test
@@ -61,7 +61,7 @@ public class PriorityQueueTest {
         heap.enqueue(enqueuedValue);
 
         final Optional<Integer> result = heap.dequeue();
-        Assert.assertEquals(enqueuedValue, result.get().intValue());
+        Assertions.assertEquals(enqueuedValue, result.get().intValue());
     }
 
     @Test
@@ -73,9 +73,9 @@ public class PriorityQueueTest {
         heap.enqueue(secondValue);
         heap.enqueue(thirdValue);
 
-        Assert.assertEquals(secondValue, heap.dequeue().get().intValue());
-        Assert.assertEquals(firstValue, heap.dequeue().get().intValue());
-        Assert.assertEquals(thirdValue, heap.dequeue().get().intValue());
+        Assertions.assertEquals(secondValue, heap.dequeue().get().intValue());
+        Assertions.assertEquals(firstValue, heap.dequeue().get().intValue());
+        Assertions.assertEquals(thirdValue, heap.dequeue().get().intValue());
     }
 
     @Test
@@ -87,7 +87,7 @@ public class PriorityQueueTest {
         IntStream.range(0, 25).forEach(heap::enqueue);
 
         for (int i = limit; i >= 0; i--) {
-            Assert.assertEquals(i, heap.dequeue().get().intValue());
+            Assertions.assertEquals(i, heap.dequeue().get().intValue());
         }
     }
 

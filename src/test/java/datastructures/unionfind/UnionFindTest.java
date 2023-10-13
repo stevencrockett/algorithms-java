@@ -1,8 +1,8 @@
 package datastructures.unionfind;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.stream.IntStream;
 
@@ -17,12 +17,12 @@ public abstract class UnionFindTest {
 
     protected final static int VERTEX_COUNT = 100;
 
-    @Before
+    @BeforeEach
     public abstract void initialise();
 
     @Test
     public void testNoUnionComponents() {
-        IntStream.range(0, VERTEX_COUNT).forEach(i -> Assert.assertEquals(i, uf.find(i)));
+        IntStream.range(0, VERTEX_COUNT).forEach(i -> Assertions.assertEquals(i, uf.find(i)));
     }
 
     @Test
@@ -32,7 +32,7 @@ public abstract class UnionFindTest {
 
         uf.union(firstVertexID, secondVertexID);
 
-        Assert.assertTrue(uf.connected(firstVertexID, secondVertexID));
+        Assertions.assertTrue(uf.connected(firstVertexID, secondVertexID));
     }
 
     @Test
@@ -46,7 +46,7 @@ public abstract class UnionFindTest {
         uf.union(thirdVertexID, fourthVertexID);
         uf.union(secondVertexID, thirdVertexID);
 
-        Assert.assertTrue(uf.connected(firstVertexID, fourthVertexID));
+        Assertions.assertTrue(uf.connected(firstVertexID, fourthVertexID));
     }
 
     @Test
@@ -56,7 +56,7 @@ public abstract class UnionFindTest {
 
         uf.union(firstVertexID, secondVertexID);
 
-        Assert.assertEquals(uf.find(firstVertexID), uf.find(secondVertexID));
+        Assertions.assertEquals(uf.find(firstVertexID), uf.find(secondVertexID));
     }
 
     @Test
@@ -70,7 +70,7 @@ public abstract class UnionFindTest {
         uf.union(thirdVertexID, fourthVertexID);
         uf.union(secondVertexID, thirdVertexID);
 
-        Assert.assertEquals(uf.find(firstVertexID), uf.find(fourthVertexID));
+        Assertions.assertEquals(uf.find(firstVertexID), uf.find(fourthVertexID));
     }
 
 

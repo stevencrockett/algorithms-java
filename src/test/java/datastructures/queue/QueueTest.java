@@ -1,7 +1,7 @@
 package datastructures.queue;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -17,39 +17,39 @@ public abstract class QueueTest {
 
     @Test
     public void testEmptyQueueSize() {
-        Assert.assertEquals(0, queue.size());
+        Assertions.assertEquals(0, queue.size());
     }
 
     @Test
     public void testEmptyQueueIsEmpty() {
-        Assert.assertTrue(queue.isEmpty());
+        Assertions.assertTrue(queue.isEmpty());
     }
 
     @Test
     public void testNonEmptyQueueSize() {
         final int someValue = 1;
 
-        Assert.assertEquals(0, queue.size());
+        Assertions.assertEquals(0, queue.size());
 
         queue.enqueue(someValue);
-        Assert.assertEquals(1, queue.size());
+        Assertions.assertEquals(1, queue.size());
 
         queue.enqueue(someValue);
-        Assert.assertEquals(2, queue.size());
+        Assertions.assertEquals(2, queue.size());
     }
 
     @Test
     public void testNonEmptyQueueIsNonEmpty() {
-        Assert.assertTrue(queue.isEmpty());
+        Assertions.assertTrue(queue.isEmpty());
 
         queue.enqueue(1);
-        Assert.assertFalse(queue.isEmpty());
+        Assertions.assertFalse(queue.isEmpty());
     }
 
     @Test
     public void testEmptyDequeue() {
         final Optional<Integer> result = queue.dequeue();
-        Assert.assertFalse(result.isPresent());
+        Assertions.assertFalse(result.isPresent());
     }
 
     @Test
@@ -58,7 +58,7 @@ public abstract class QueueTest {
         queue.enqueue(enqueuedValue);
 
         final Optional<Integer> result = queue.dequeue();
-        Assert.assertEquals(enqueuedValue, result.get().intValue());
+        Assertions.assertEquals(enqueuedValue, result.get().intValue());
     }
 
     @Test
@@ -68,8 +68,8 @@ public abstract class QueueTest {
         queue.enqueue(firstValue);
         queue.enqueue(secondValue);
 
-        Assert.assertEquals(firstValue, queue.dequeue().get().intValue());
-        Assert.assertEquals(secondValue, queue.dequeue().get().intValue());
+        Assertions.assertEquals(firstValue, queue.dequeue().get().intValue());
+        Assertions.assertEquals(secondValue, queue.dequeue().get().intValue());
     }
 
     @Test
@@ -81,7 +81,7 @@ public abstract class QueueTest {
         }
 
         for (int i = 0; i < limit; i++) {
-            Assert.assertEquals(i, queue.dequeue().get().intValue());
+            Assertions.assertEquals(i, queue.dequeue().get().intValue());
         }
     }
 
@@ -93,7 +93,7 @@ public abstract class QueueTest {
         IntStream.range(0, numItems).forEach(queue::enqueue);
 
         IntStream.range(0, numItems).forEach(expectedItem ->
-                Assert.assertEquals(expectedItem, queue.dequeue().get().intValue()));
+                Assertions.assertEquals(expectedItem, queue.dequeue().get().intValue()));
     }
 
 }

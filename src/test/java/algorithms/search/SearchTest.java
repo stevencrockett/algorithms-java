@@ -1,7 +1,7 @@
 package algorithms.search;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
@@ -28,8 +28,8 @@ public class SearchTest {
 
         final Optional<Integer> result = BinarySearch.search(items, knownItem);
 
-        Assert.assertTrue(result.isPresent());
-        Assert.assertEquals(knownIndex, result.get().intValue());
+        Assertions.assertTrue(result.isPresent());
+        Assertions.assertEquals(knownIndex, result.get().intValue());
     }
 
     @Test
@@ -50,7 +50,7 @@ public class SearchTest {
 
         final Optional<Integer> result = BinarySearch.search(items, knownItem);
 
-        Assert.assertFalse(result.isPresent());
+        Assertions.assertFalse(result.isPresent());
     }
 
 }

@@ -1,8 +1,8 @@
 package algorithms.graph;
 
 import datastructures.graph.UndirectedGraph;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class ConnectedComponentsTest {
 
@@ -29,29 +29,29 @@ public class ConnectedComponentsTest {
 
         final int actualCount = cc.count();
 
-        Assert.assertEquals(expectedCount, actualCount);
+        Assertions.assertEquals(expectedCount, actualCount);
     }
 
     @Test
     public void testVerticesAreConnected() {
         final ConnectedComponents cc = new ConnectedComponents(generateUndirectedGraph());
 
-        Assert.assertTrue(cc.connected(0, 2));
-        Assert.assertTrue(cc.connected(3, 4));
+        Assertions.assertTrue(cc.connected(0, 2));
+        Assertions.assertTrue(cc.connected(3, 4));
 
-        Assert.assertFalse(cc.connected(1, 5));
-        Assert.assertFalse(cc.connected(4, 5));
+        Assertions.assertFalse(cc.connected(1, 5));
+        Assertions.assertFalse(cc.connected(4, 5));
     }
 
     @Test
     public void testComponentIds() {
         final ConnectedComponents cc = new ConnectedComponents(generateUndirectedGraph());
 
-        Assert.assertTrue(cc.id(0) == cc.id(2));
-        Assert.assertTrue(cc.id(3) == cc.id(4));
+        Assertions.assertTrue(cc.id(0) == cc.id(2));
+        Assertions.assertTrue(cc.id(3) == cc.id(4));
 
-        Assert.assertTrue(cc.id(1) != cc.id(5));
-        Assert.assertTrue(cc.id(4) != cc.id(5));
+        Assertions.assertTrue(cc.id(1) != cc.id(5));
+        Assertions.assertTrue(cc.id(4) != cc.id(5));
     }
 
 }
